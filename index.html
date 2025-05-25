@@ -97,6 +97,7 @@
         /* Hero section with animated gradient */
         .hero {
             padding: 180px 0 100px;
+            padding-bottom:10px !important;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -741,17 +742,7 @@
             position: relative;
         }
         
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: var(--gradient);
-            clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
-            z-index: 0;
-        }
+        
         
         .footer-content {
             position: relative;
@@ -1002,8 +993,6 @@
             object-fit: cover;
             display: block;
         }
-        
-        /* First image */
 
         .gallery-caption {
             position: absolute;
@@ -1083,7 +1072,7 @@
             }
         }
         .contributor-wrapper {
-  background:  #4895ef;;
+  
   padding: 50px 0;
   display: flex;
   justify-content: center;
@@ -1099,7 +1088,8 @@
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
       max-width: 360px; 
       width: 75%;       
-      margin: 40px auto;
+      margin: 0px auto;
+      margin-bottom:10px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       transition: all 0.3s ease;
       overflow: hidden;
@@ -1212,7 +1202,7 @@
     <section class="hero">
         <div class="container">
             <h1>Your Ultimate College Companion App</h1>
-            <p>MaxCSE provides everything Computer Science students need - notes, assignments, study materials, and more - all in one place.</p>
+            <p>CSE-A Class all notes at one Place</p>
             
             <a href="https://lfjbfvuwgzgvnbskftzk.supabase.co/storage/v1/object/public/pcc//MaxCSE.apk" class="download-btn" download>
                 <i class="fas fa-download"></i> Download APK (v1.0)
@@ -1222,6 +1212,18 @@
                 <i class="fas fa-question-circle"></i> How to Install
             </button>
         </div>
+    <div class="contributor-wrapper">
+<div class="contributor-card">
+    <div class="contributor-title">Project Contributor</div>
+    <a href="https://instagram.com/yourhandle" target="_blank" class="instagram-handle" id="contributor" data-instagram="@themukund07">
+      <i class="fab fa-instagram"></i>
+      <span>@themukund07</span>
+    </a>
+
+    
+  </div>
+</div>
+        
     </section>
     
     <!-- Installation Steps Popup -->
@@ -1290,16 +1292,7 @@
     </div>
     
 </div>
-<div class="contributor-wrapper">
-<div class="contributor-card">
-    <div class="contributor-title">Project Contributor</div>
-    <a href="https://instagram.com/yourhandle" target="_blank" class="instagram-handle" id="contributor" data-instagram="@themukund07">
-      <i class="fab fa-instagram"></i>
-      <span>@themukund07</span>
-    </a>
 
-    
-  </div></div>
 
 
     
@@ -1307,8 +1300,8 @@
     <div class="gallery-container">
         <h2 class="gallery-title">App Screenshots</h2>
         <div class="horizontal-gallery" style="margin-left:10px;margin-right:10px">
-            <div class="gallery-item" >
-                <img src="https://i.ibb.co/1wf9yQB/Screenshot-20250520-233952-Max-CSE.png" alt="MaxCSE Dashboard" loading="lazy" >
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/1wf9yQB/Screenshot-20250520-233952-Max-CSE.png" alt="MaxCSE Dashboard" loading="lazy">
                 <div class="gallery-caption">
                     <h3>Dashboard</h3>
                     <p>Quick access to all features</p>
@@ -1350,31 +1343,7 @@
     </div>
     
     <!-- Features section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Amazing Features</h2>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Comprehensive Notes</h3>
-                    <p>Well-organized notes for all CSE subjects including DSA, OS, DBMS, and more, curated by top students.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">💻</div>
-                    <h3>Lab Assignments</h3>
-                    <p>Complete lab assignments with solutions, submission deadlines, and practical exam preparation.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📂</div>
-                    <h3>Study Resources</h3>
-                    <p>Previous year papers, reference books, and important PDFs organized by semester for easy access.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    
     
     <!-- Final CTA section -->
     <section class="cta">
