@@ -192,6 +192,199 @@
             font-size: 1.2rem;
         }
         
+        /* How to Install button */
+        .steps-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background: transparent;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+        
+        .steps-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popup-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            animation: popupFadeIn 0.4s ease;
+            position: relative;
+        }
+        
+        @keyframes popupFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .popup-content {
+    background-color: white;
+    padding: 0; /* Remove padding here since we'll handle it internally */
+    border-radius: 16px; /* This ensures all corners are rounded */
+    width: 90%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow: hidden; /* Changed from 'auto' to 'hidden' to contain border-radius */
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    animation: popupFadeIn 0.4s ease;
+    position: relative;
+}
+
+.popup-header {
+    position: sticky;
+    top: 0;
+    background: white;
+    /* padding: 20px 30px;  Increased padding for better spacing */
+    margin: 0; /* Removed negative margins */
+    border-top-left-radius: 16px; /* Match parent radius */
+    border-top-right-radius: 16px; /* Match parent radius */
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    margin-bottom:10px;
+    /* box-shadow: 0 2px 10px rgba(0,0,0,0.05); */
+}
+
+.popup-steps-container {
+    padding: 0 30px 30px 30px; /* Proper padding for content */
+    overflow-y: auto; /* Scrollable content area */
+    max-height: calc(80vh - 80px); /* Account for header height */
+}
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            background: rgba(247, 37, 133, 0.1);
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-btn:hover {
+            color: var(--accent);
+            background: rgba(247, 37, 133, 0.1);
+            transform: rotate(90deg);
+        }
+
+        /* Adjust popup content padding */
+        .popup-content {
+            padding-top: 10px; /* Reduced top padding since header has its own */
+        }
+        
+        .step {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            display: inline;
+            font-size: 1.2rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .step-description {
+            margin-top: 10px;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .step-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid #eee;
+        }
+        
+        .popup-download-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: var(--gradient-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(247, 37, 133, 0.3);
+        }
+        
+        .popup-download-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(247, 37, 133, 0.4);
+        }
+        
         /* Enhanced Screenshot Gallery */
         .gallery-container {
             width: 100%;
@@ -714,6 +907,15 @@
             .screenshot-card {
                 width: 240px;
             }
+            
+            .popup-content {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .popup-header h2 {
+                font-size: 1.5rem;
+            }
         }
         
         @media (max-width: 576px) {
@@ -740,6 +942,10 @@
             .footer-links {
                 flex-direction: column;
                 gap: 15px;
+            }
+            
+            .step-title {
+                font-size: 1.1rem;
             }
         }
         
@@ -796,6 +1002,8 @@
             object-fit: cover;
             display: block;
         }
+        
+        /* First image */
 
         .gallery-caption {
             position: absolute;
@@ -874,6 +1082,119 @@
                 height: 350px;
             }
         }
+        .contributor-wrapper {
+  background:  #4895ef;;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+}
+        
+        .contributor-card {
+      position: relative;
+      background: white;
+      padding: 20px 30px;
+      background-color:;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      max-width: 360px; 
+      width: 75%;       
+      margin: 40px auto;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+
+    .contributor-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
+    }
+
+    .contributor-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .contributor-title {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .instagram-handle {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 700;
+      font-size: 20px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    .instagram-handle:hover {
+      background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+      color: white;
+      -webkit-text-fill-color: white;
+      box-shadow: 0 4px 12px rgba(253, 29, 29, 0.3);
+    }
+
+    .instagram-handle i {
+      margin-right: 6px;
+      font-size: 18px;
+    }
+
+    
+
+    
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .contributor-card {
+        padding: 18px 25px;
+      }
+
+      .instagram-handle {
+        font-size: 18px;
+      }
+
+      .contributor-title {
+        font-size: 15px;
+      }
+
+      
+    }
+
+    @media (max-width: 480px) {
+      .contributor-card {
+        padding: 16px 20px;
+      }
+
+      .instagram-handle {
+        font-size: 16px;
+      }
+
+      .contributor-title {
+        font-size: 14px;
+      }
+
+      .social-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+      }
+    }
     </style>
 </head>
 <body>
@@ -896,15 +1217,98 @@
             <a href="https://lfjbfvuwgzgvnbskftzk.supabase.co/storage/v1/object/public/pcc//MaxCSE.apk" class="download-btn" download>
                 <i class="fas fa-download"></i> Download APK (v1.0)
             </a>
+            
+            <button class="steps-btn" id="stepsBtn">
+                <i class="fas fa-question-circle"></i> How to Install
+            </button>
         </div>
     </section>
+    
+    <!-- Installation Steps Popup -->
+    <div class="popup" id="popup">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h2>How to Install?</h2>
+            <button class="close-btn" id="closeBtn">&times;</button>
+        </div>
+        
+        <div class="popup-steps-container">
+            <!-- Your steps content here -->
+            <div class="step">
+                <span class="step-number">1</span>
+                <span class="step-title">Download the APK File</span>
+                <p class="step-description">
+                    Click the download button below to get the MaxCSE APK file.
+                </p>
+                <a href="https://lfjbfvuwgzgvnbskftzk.supabase.co/storage/v1/object/public/pcc//MaxCSE.apk" class="popup-download-link" download>
+                <i class="fas fa-download"></i> Download MaxCSE APK
+            </a>
+                
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <span class="step-title">Click on install</span>
+                
+                
+                <img src="https://i.ibb.co/tT8C1hPL/1app.jpg" alt="Download step" class="step-image">
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <span class="step-title">Click on more details</span>
+                
+                
+                <img src="https://i.ibb.co/QvqMHhHt/2app.jpg" alt="Download step" class="step-image">
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                <span class="step-title">Click on Install anyway</span>
+                
+                
+                <img src="https://i.ibb.co/svkv28km/3app.jpg" alt="Download step" class="step-image">
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                <span class="step-title">App will get installed.</span>
+                
+                
+                <img src="https://i.ibb.co/d48T39LB/4app.jpg" alt="Download step" class="step-image">
+            </div>
+            
+            
+            
+            
+            <!-- Other steps... -->
+            
+            
+            
+        </div>
+        
+    </div>
+    
+</div>
+<div class="contributor-wrapper">
+<div class="contributor-card">
+    <div class="contributor-title">Project Contributor</div>
+    <a href="https://instagram.com/yourhandle" target="_blank" class="instagram-handle" id="contributor" data-instagram="@themukund07">
+      <i class="fab fa-instagram"></i>
+      <span>@themukund07</span>
+    </a>
+
+    
+  </div></div>
+
+
     
     <!-- Enhanced Screenshot Gallery -->
     <div class="gallery-container">
         <h2 class="gallery-title">App Screenshots</h2>
-        <div class="horizontal-gallery">
-            <div class="gallery-item">
-                <img src="https://i.ibb.co/1wf9yQB/Screenshot-20250520-233952-Max-CSE.png" alt="MaxCSE Dashboard" loading="lazy">
+        <div class="horizontal-gallery" style="margin-left:10px;margin-right:10px">
+            <div class="gallery-item" >
+                <img src="https://i.ibb.co/1wf9yQB/Screenshot-20250520-233952-Max-CSE.png" alt="MaxCSE Dashboard" loading="lazy" >
                 <div class="gallery-caption">
                     <h3>Dashboard</h3>
                     <p>Quick access to all features</p>
@@ -918,27 +1322,26 @@
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="https://i.ibb.co/HLLNFwBg/Screenshot-20250520-233907-Max-CSE.png" alt="MaxCSE Assignments" loading="lazy">
+                                <img src="https://i.ibb.co/HLLNFwBg/Screenshot-20250520-233907-Max-CSE.png" alt="MaxCSE Assignments" loading="lazy">
                 <div class="gallery-caption">
                     <h3>PDFs</h3>
-                    <p>all pdfs</p>
+                    <p>All PDFs organized by subject</p>
                 </div>
             </div>
             <div class="gallery-item">
                 <img src="https://i.ibb.co/Ngf69gvg/Screenshot-20250520-233824-Max-CSE.png" alt="MaxCSE Resources" loading="lazy">
                 <div class="gallery-caption">
-                    <h3>Notification</h3>
-                    <p>latest updates</p>
+                    <h3>Notifications</h3>
+                    <p>Get latest updates and announcements</p>
                 </div>
             </div>
             <div class="gallery-item">
                 <img src="https://i.ibb.co/m5kqtWys/Screenshot-20250520-233849-Max-CSE.png" alt="MaxCSE Calendar" loading="lazy">
                 <div class="gallery-caption">
-                    <h3>Admin access</h3>
-                    <p>admin to update the app</p>
+                    <h3>Admin Access</h3>
+                    <p>Admin panel to update app content</p>
                 </div>
             </div>
-            <!-- You can add more images here if needed -->
         </div>
         <div class="gallery-nav">
             <button class="gallery-prev"><i class="fas fa-chevron-left"></i></button>
@@ -973,8 +1376,6 @@
         </div>
     </section>
     
-   
-    
     <!-- Final CTA section -->
     <section class="cta">
         <div class="container">
@@ -992,10 +1393,8 @@
             <div class="footer-content">
                 <div class="footer-logo">MaxCSE</div>
                 
-               
                 <div class="social-links">
                     <a href="https://instagram.com/themukund07" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    
                 </div>
                 
                 <p class="copyright">&copy; 2023 MaxCSE. All rights reserved.<br>Made by Love | MaxplusLegend</p>
@@ -1015,7 +1414,7 @@
         });
         
         // Gallery navigation
-        const gallery = document.querySelector('.screenshot-gallery');
+        const gallery = document.querySelector('.horizontal-gallery');
         const prevBtn = document.querySelector('.gallery-prev');
         const nextBtn = document.querySelector('.gallery-next');
         
@@ -1027,9 +1426,31 @@
             gallery.scrollBy({ left: -300, behavior: 'smooth' });
         });
         
+        // Popup functionality
+        const stepsBtn = document.getElementById('stepsBtn');
+        const popup = document.getElementById('popup');
+        const closeBtn = document.getElementById('closeBtn');
+        
+        stepsBtn.addEventListener('click', () => {
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
         // Animate elements when they come into view
         const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.feature-card, .testimonial, .screenshot-card');
+            const elements = document.querySelectorAll('.feature-card, .gallery-item');
             
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
@@ -1044,30 +1465,26 @@
         
         // Initialize animation on load
         window.addEventListener('load', function() {
-            // Stagger animation for feature cards
             const featureCards = document.querySelectorAll('.feature-card');
             featureCards.forEach((card, index) => {
                 card.style.transitionDelay = `${index * 0.1}s`;
             });
             
-            // Stagger animation for screenshots
-            const screenshots = document.querySelectorAll('.screenshot-card');
-            screenshots.forEach((card, index) => {
-                card.style.transitionDelay = `${index * 0.2}s`;
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach((item, index) => {
+                item.style.transitionDelay = `${index * 0.2}s`;
             });
             
             animateOnScroll();
         });
         
-        // Run animation check on scroll
         window.addEventListener('scroll', animateOnScroll);
         
         // Download tracking
-        document.querySelectorAll('.download-btn').forEach(btn => {
+        document.querySelectorAll('.download-btn, .popup-download-link').forEach(btn => {
             btn.addEventListener('click', function() {
-                // You can add analytics here
                 console.log('Download button clicked');
-                // Example: gtag('event', 'download', { 'event_category': 'engagement' });
+                // Add analytics tracking here if needed
             });
         });
     </script>
