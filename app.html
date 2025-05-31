@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Releases & Updates</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #4cc9f0;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            --deprecated: #adb5bd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7ff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .logo h1 {
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .hero p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .download-btn {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+            background: linear-gradient(to right, var(--primary-dark), var(--secondary));
+        }
+        
+        .releases-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .release-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .release-card.deprecated {
+            background-color: #f8f9fa;
+            opacity: 0.8;
+        }
+        
+        .release-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .release-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .release-header.deprecated {
+            border-bottom-color: #e9ecef;
+        }
+        
+        .release-app-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .app-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            display: flex;
+            padding:0;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .app-icon.deprecated {
+            background: linear-gradient(135deg, #adb5bd, #6c757d);
+        }
+        
+        .app-meta {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .version-tag {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .version-tag.deprecated {
+            background-color: var(--deprecated);
+        }
+        
+        .release-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .release-date.deprecated {
+            color: var(--deprecated);
+        }
+        
+        .release-body {
+            padding: 1.5rem;
+        }
+
+        .release-body.deprecated {
+            color: var(--deprecated);
+        }
+        
+        .release-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .release-title.deprecated {
+            color: var(--deprecated);
+        }
+        
+        .release-notes {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .release-notes.deprecated {
+            color: var(--deprecated);
+        }
+        
+        .release-notes ul {
+            list-style-type: none;
+        }
+        
+        .release-notes li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .release-notes.deprecated li:before {
+            color: var(--deprecated);
+        }
+        
+        .release-notes li:before {
+            content: "•";
+            color: var(--primary);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -3px;
+        }
+        
+        .download-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .secondary-btn {
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .secondary-btn.deprecated {
+            background: #e9ecef;
+            color: var(--deprecated);
+            border-color: var(--deprecated);
+            cursor: not-allowed;
+        }
+        
+        .secondary-btn:hover:not(.deprecated) {
+            background: var(--gray-light);
+        }
+        
+        .file-size {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .file-size.deprecated {
+            color: var(--deprecated);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        
+        .badge-new {
+            background-color: #f72585;
+            color: white;
+        }
+        
+        .badge-beta {
+            background-color: #f8961e; /* Default orange, overridden inline */
+            color: white;
+        }
+        
+        .badge-stable {
+            background-color: #4cc9f0;
+            color: white;
+        }
+
+        .badge-deprecated {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .modal h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .modal p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+        
+        .modal-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: var(--gray-light);
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .releases-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .grayscale {
+            filter: grayscale(100%);
+            -webkit-filter: grayscale(100%); /* For Safari */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-download"></i>
+                <h1>MaxCSE App</h1>
+            </div>
+        </header>
+        
+        <section class="hero">
+            <h2>Latest App Releases</h2>
+            <p>Stay up-to-date with the newest features, improvements, and bug fixes for our Android application. Download the latest version to get the best experience.</p>
+            <button class="download-btn" id="mainDownloadBtn" onclick="window.open('https://github.com/MukundX/Mukundx/releases/download/v1.0.1/MaxCSE.apk', '_blank')" style="cursor: pointer; ">
+                <i class="fas fa-download"></i> Download Latest Version
+            </button>
+        </section>
+        <h1 style="margin-bottom:0;padding-bottom:0"><i class="fas fa-rocket" style="margin-right:10px"></i>Version releases :</h1>
+        
+        <div class="releases-container" style="margin-top:10px">
+            <!-- Current Version -->
+            <div class="release-card">
+                <div class="release-header">
+                    <div class="release-app-info">
+                        <div class="app-icon">
+                        <img src="https://storage.googleapis.com/webapp_files/0e33b3d078a844971e82275dbf2b68c7/files/iconMaxCSE%20(1).png" style="width:50px;height:50px;padding:04px;border-radius:50%">
+                        </div>
+                        <div class="app-meta">
+                            <span class="version-tag">v1.0.1 <span class="badge badge-stable">STABLE</span></span>
+                            <span class="release-date">31-05-2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="release-body">
+                    <h3 class="release-title">Security, Ui update & Features added</h3>
+                    <div class="release-notes">
+                        <ul>
+                            <li>file download enabled</li>
+                            <li>UI updated</li>
+                            <li>App Notification working now.</li>
+                            <li>Admin Panel for Classes File upload</li>
+                            <li>Fixed memory leak issues</li>
+                            <li>all other feature of v1.0.0 working</li>
+                            <li>CSE- B Also added.</li>
+                        </ul>
+                    </div>
+                    <div class="download-container">
+                        <button class="secondary-btn download-btn" data-version="1.0.1" onclick="window.open('https://github.com/MukundX/Mukundx/releases/download/v1.0.1/MaxCSE.apk', '_blank')" style="cursor: pointer; ">
+                            <i class="fas fa-download"></i> Download APK
+                        </button>
+                        <span class="file-size">14 MB</span>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            <!-- Deprecated Version with both badges -->
+            <div class="release-card deprecated">
+                <div class="release-header deprecated">
+                    <div class="release-app-info">
+                        <div class="app-icon deprecated">
+                        
+                        <img src="https://storage.googleapis.com/webapp_files/0e33b3d078a844971e82275dbf2b68c7/files/iconMaxCSE%20(1).png" style="width:50px;height:50px;padding:04px;border-radius:50%" class ="grayscale">
+                        
+                        </div>
+                        <div class="app-meta">
+                            <span class="version-tag deprecated">v1.0.0 
+                              <span class="badge badge-beta" style="background-color:#ccc">BETA</span> 
+                              <span class="badge badge-deprecated">DEPRECATED</span>
+                            </span>
+                            <span class="release-date deprecated">25-05-2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="release-body deprecated">
+                    <h3 class="release-title deprecated">Initial Beta Release (Deprecated)</h3>
+                    <div class="release-notes deprecated">
+                        <ul>
+                            <ul>
+                            <li>Pdf docs opening </li>
+                            <li>File Upload by Admin working</li>
+                            <li>only CSE Section A</li>
+                            <li>Notification working</li>
+                        </ul>
+                        </ul>
+                    </div>
+                    <div class="download-container">
+                        <button class="secondary-btn deprecated" disabled>
+                            <i class="fas fa-ban"></i> Unavailable
+                        </button>
+                        <span class="file-size deprecated">3 MB</span>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            <!-- Deprecated Version -->
+            
+        </div>
+        
+        <footer>
+            <p>© 2025 MaxCSE. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <!-- Download Modal -->
+    <div class="modal" id="downloadModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-cloud-download-alt"></i>
+            </div>
+            <h3>Thanks for Downloading</h3>
+            <p>Downloading version : <span id="downloadVersion"></span> </p>
+            <div class="progress-bar">
+                <div class="progress" id="downloadProgress"></div>
+            </div>
+            <p>If download doesn't start, <a href="#" id="manualDownloadLink">click here</a> to download manually.</p>
+            <button class="modal-btn" id="closeModalBtn">Got it!</button>
+        </div>
+    </div>
+    
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('downloadModal');
+        const downloadVersion = document.getElementById('downloadVersion');
+        const downloadProgress = document.getElementById('downloadProgress');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const manualDownloadLink = document.getElementById('manualDownloadLink');
+        
+        // Function to show modal and simulate download
+        function showDownloadModal(version) {
+            downloadVersion.textContent = version;
+            modal.style.display = 'flex';
+            
+            // Simulate download progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                downloadProgress.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    // Change to completion state after a delay
+                    setTimeout(() => {
+                        document.querySelector('.modal-icon').innerHTML = '<i class="fas fa-check-circle"></i>';
+                        document.querySelector('.modal h3').textContent = 'Thanks for Downloading';
+                        
+                        downloadProgress.style.display = 'none';
+                    }, 300);
+                }
+            }, 100);
+            
+            // Set manual download link (in real app this would be the actual download URL)
+            manualDownloadLink.href = `https://github.com/MukundX/Mukundx/releases/download/${version}/MaxCSE.apk`;
+            
+            // In a real app, you would initiate the actual download here
+            console.log(`Initiating download for Android version ${version}`);
+        }
+        
+        // Close modal
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            // Reset modal for next use
+            document.querySelector('.modal-icon').innerHTML = '<i class="fas fa-cloud-download-alt"></i>';
+            document.querySelector('.modal h3').textContent = 'Download Started';
+            downloadProgress.style.width = '0%';
+            downloadProgress.style.display = 'block';
+        });
+        
+        // Handle all download buttons
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const version = this.getAttribute('data-version') || '1.0.1'; // Default to latest if no version specified
+                
+                // Change button state
+                const originalHTML = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
+                
+                // Show modal after a short delay (simulating preparation)
+                setTimeout(() => {
+                    showDownloadModal(version);
+                    this.innerHTML = originalHTML;
+                }, 800);
+            });
+        });
+        
+        // Main download button
+        document.getElementById('mainDownloadBtn').setAttribute('data-version', '1.0.1');
+    </script>
+</body>
+</html>
