@@ -1185,6 +1185,83 @@
         font-size: 13px;
       }
     }
+
+        .showcase-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3vw;
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            flex-wrap: nowrap;
+            overflow-x: hidden;
+        }
+        
+        .text-content {
+            flex: 0 1 45%;
+            min-width: 300px;
+            padding: 0 2vw;
+        }
+        
+        .text-content h2 {
+            font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+            color: #333;
+            margin-bottom: 2vh;
+        }
+        
+        .text-content p {
+            font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 3vh;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1.5vh 3vw;
+            background-color: #4285f4;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            font-size: clamp(0.8rem, 1vw, 1rem);
+        }
+        
+        .cta-button:hover {
+            background-color: #3367d6;
+        }
+        
+        .mockup-image-container {
+            flex: 0 1 45%;
+            min-width: 250px;
+            text-align: center;
+        }
+        
+        .mockup-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 20px;
+            /* box-shadow: 0 10px 30px rgba(0,0,0,0.1); */
+            object-fit: contain;
+        }
+        
+        @media (max-width: 600px) {
+            .showcase-section {
+                padding: 5vw;
+            }
+            
+            .text-content, 
+            .mockup-image-container {
+                flex: 0 1 48%;
+                min-width: 150px;
+            }
+            
+            .mockup-image {
+                max-width: 180px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1354,6 +1431,21 @@
             <a href="/app" class="download-btn">
                 <i class="fas fa-download"></i> Download MaxCSE Now
             </a>
+        </div>
+    </section>
+
+
+    <section class="showcase-section">
+        <div class="text-content">
+            <h2>Our Amazing App</h2>
+            <p>CSE Department</p>
+            <p>Discover all the amazing features that will make your college notes easy accessable.</p>
+            <a href="/app" class="cta-button">Download Now</a>
+        </div>
+        
+        <div class="mockup-image-container">
+            <!-- Replace with your actual app mockup image -->
+            <img src="https://i.ibb.co/2YH62PsJ/Screenshot-2025-06-07-122743-left.png" alt="App Mockup" class="mockup-image">
         </div>
     </section>
     
